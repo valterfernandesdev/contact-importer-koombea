@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,31 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_221_112_205_142) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_12_205142) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'contacts', force: :cascade do |t|
-    t.string 'name', null: false
-    t.string 'date_of_birth', null: false
-    t.string 'phone', null: false
-    t.string 'address', null: false
-    t.string 'credit_card_number', null: false
-    t.string 'credit_card_network', null: false
-    t.string 'email', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.bigint 'user_id'
-    t.index %w[email user_id], name: 'index_contacts_on_email_and_user_id', unique: true
-    t.index ['user_id'], name: 'index_contacts_on_user_id'
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "date_of_birth", null: false
+    t.string "phone", null: false
+    t.string "address", null: false
+    t.string "credit_card_number", null: false
+    t.string "credit_card_network", null: false
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["email", "user_id"], name: "index_contacts_on_email_and_user_id", unique: true
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.datetime 'remember_created_at'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['email'], name: 'index_users_on_email', unique: true
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
+
 end
