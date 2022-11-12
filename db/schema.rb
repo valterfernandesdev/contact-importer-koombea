@@ -12,7 +12,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 20_221_112_192_753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+
+  create_table 'contacts', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'date_of_birth', null: false
+    t.string 'phone', null: false
+    t.string 'address', null: false
+    t.string 'credit_card_number', null: false
+    t.string 'credit_card_network', null: false
+    t.string 'email', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
 end
