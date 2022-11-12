@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Contact < ApplicationRecord
+  belongs_to :user
   validates :name, :date_of_birth, :phone, :address, :credit_card_number, :credit_card_network, :email, presence: true
   validates :name, format: {
     with: /\A[a-zA-Z\s-]+\z/,

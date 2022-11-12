@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :contact do
+    user
     name { Faker::Movies::StarWars.character }
     date_of_birth { Faker::Date.between(from: '1977-11-18', to: '1993-02-05') }
     phone { '(+57) 320 432 05 09' }
