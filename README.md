@@ -52,3 +52,8 @@ bin/rspec
 bin/rspec spec/path/to/myfile.rb
 bin/rspec spec/path/to/myfile.rb:50
 ```
+### Rubocop
+Running
+```sh
+rubocop
+```
