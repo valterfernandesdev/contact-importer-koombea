@@ -55,6 +55,8 @@ gem 'bootsnap', require: false
 
 gem 'devise'
 
+gem 'sidekiq'
+
 group :development, :test do
   gem 'dotenv-rails', require: 'dotenv/rails-now'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

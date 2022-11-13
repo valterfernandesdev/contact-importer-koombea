@@ -57,3 +57,11 @@ Running
 ```sh
 rubocop
 ```
+
+### Sidekiq
+Make sure you have redis installed and running
+```sh
+sudo service redis-server restart
+```
+
+To check all background jobs, go to http://localhost:3000/sidekiq
