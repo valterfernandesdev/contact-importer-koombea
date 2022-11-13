@@ -92,6 +92,9 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
+    credit_card_validations (6.0.0)
+      activemodel (>= 5.2, < 7.1)
+      activesupport (>= 5.2, < 7.1)
     cssbundling-rails (1.1.1)
       railties (>= 6.0.0)
     database_cleaner-active_record (2.0.1)
@@ -361,6 +364,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  credit_card_validations
   cssbundling-rails
   database_cleaner-active_record
   debug

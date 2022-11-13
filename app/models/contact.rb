@@ -14,11 +14,19 @@ class Contact < ApplicationRecord
   }
   validate :date_of_birth_format
 
+  before_validation :credit_card_network_from_card_number
+
+  validates_format_of :email, with: Devise::email_regexp
+
   private
 
   def date_of_birth_format
     return if Date._iso8601(date_of_birth).present?
 
     errors.add(:date_of_birth, 'Invalid format. Use ISO8601 format.')
+  end
+
+  def credit_card_network_from_card_number
+    self.credit_card_network = CreditCardValidations::Detector.new(credit_card_number).brand_name
   end
 end

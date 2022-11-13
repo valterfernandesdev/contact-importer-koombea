@@ -57,6 +57,8 @@ gem 'devise'
 
 gem 'sidekiq'
 
+gem 'credit_card_validations'
+
 group :development, :test do
   gem 'dotenv-rails', require: 'dotenv/rails-now'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

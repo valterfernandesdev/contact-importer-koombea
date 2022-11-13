@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Sidekiq.configure_server do |config|
-  config.options[:concurrency] = Integer(5)
   config.redis = { db: 1 }
 
   Rails.logger = Sidekiq.logger

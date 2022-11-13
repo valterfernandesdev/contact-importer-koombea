@@ -11,7 +11,6 @@
   </head>
 
   <body class="h-full">
-
     <% if user_signed_in? %>
       <div class="min-h-full">
         <nav class="bg-gray-800">
@@ -25,7 +24,7 @@
                   <div class="ml-10 flex items-baseline space-x-4">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <a href="/contacts" class="<%= current_controller_nav_class('contacts', controller.controller_name) %>" aria-current="page">Contacts</a>
-                    <a href="/contact_files/new" class="<%= current_controller_nav_class('contact_files', controller.controller_name) %>">Import Contacts</a>
+                    <a href="/contact_files" class="<%= current_controller_nav_class('contact_files', controller.controller_name) %>">Contact Files</a>
                   </div>
                 </div>
               </div>

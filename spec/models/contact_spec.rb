@@ -15,7 +15,6 @@ RSpec.describe Contact do
     it { is_expected.to validate_presence_of :phone }
     it { is_expected.to validate_presence_of :address }
     it { is_expected.to validate_presence_of :credit_card_number }
-    it { is_expected.to validate_presence_of :credit_card_network }
     it { is_expected.to validate_presence_of :email }
 
     describe 'validating name format' do
@@ -55,6 +54,20 @@ RSpec.describe Contact do
 
       context 'when date_of_birth is invalid' do
         before { contact.date_of_birth = ['05/02/1993', '05-02-1982'].sample }
+
+        it { is_expected.to be_invalid }
+      end
+    end
+
+    describe 'validating email format' do
+      context 'when email is valid' do
+        before { contact.email = %w[valter@test.com v@v].sample }
+
+        it { is_expected.to be_valid }
+      end
+
+      context 'when email is invalid' do
+        before { contact.email = ['dasdsad', 'dsadas@'].sample }
 
         it { is_expected.to be_invalid }
       end

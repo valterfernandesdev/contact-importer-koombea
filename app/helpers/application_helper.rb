@@ -7,7 +7,7 @@ module ApplicationHelper
   def header_text(controller_name)
     return 'Contacts' if controller_name == 'contacts'
 
-    'Import Contacts'
+    'Import Contact Files'
   end
 
   def current_controller_nav_class(nav_text, controller_name)

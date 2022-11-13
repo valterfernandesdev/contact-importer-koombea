@@ -15,7 +15,7 @@ RSpec.describe ApplicationHelper do
     context 'when controller name is contact files' do
       let(:controller_name) { 'contact_files' }
 
-      it { is_expected.to eq('Import Contacts') }
+      it { is_expected.to eq('Import Contact Files') }
     end
   end
 
