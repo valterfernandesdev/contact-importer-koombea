@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Contact do
   subject(:contact) { build(:contact) }
 
-  describe "associations" do
+  describe 'associations' do
     it { is_expected.to belong_to(:user) }
   end
 

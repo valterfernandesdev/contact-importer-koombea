@@ -34,7 +34,8 @@ Metrics/BlockLength:
     - 'Gemfile'
     - 'spec/**/*'
     - 'config/**/*'
-    - 'lib/tasks/**/*'
+    - 'db/migrate/**/*'
+    - 'db/schema.rb'
 
 Metrics/ClassLength:
   Max: 150
@@ -45,11 +46,15 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   Max: 20
   Exclude:
-    - 'lib/tasks/**/*'
-    - 'spec/schemas/**/*'
+    - 'db/migrate/**/*'
+    - 'db/schema.rb'
 
 Metrics/PerceivedComplexity:
   Max: 15
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/**/*'
 
 RSpec/ExampleLength:
   Max: 25
