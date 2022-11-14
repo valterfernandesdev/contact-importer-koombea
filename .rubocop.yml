@@ -91,4 +91,7 @@ Style/StringLiterals:
 
 Rails/I18nLocaleTexts:
   Enabled: false
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
   

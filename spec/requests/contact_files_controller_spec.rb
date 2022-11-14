@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ContactFilesController do
   before { sign_in user }
 
   let(:user) { create(:user) }
 
-  describe '#index' do
+  describe "#index" do
     subject(:get_contact_files_path) { get contact_files_path }
 
     before do
@@ -17,7 +17,7 @@ RSpec.describe ContactFilesController do
 
     let(:contact_files) { create_list(:contact_file, 2, user: user) }
 
-    it 'assign contact files and return ok status' do
+    it "assign contact files and return ok status" do
       get_contact_files_path
 
       expect(assigns(:contact_files)).to match_array(contact_files)
@@ -25,41 +25,41 @@ RSpec.describe ContactFilesController do
     end
   end
 
-  describe '#new' do
+  describe "#new" do
     subject!(:get_new_contact_file_path) { get new_contact_file_path }
 
     it { expect(response).to have_http_status :ok }
   end
 
-  describe '#create' do
+  describe "#create" do
     subject(:post_contact_files_path) { post contact_files_path, params: params }
 
     let(:params) do
       {
-        contact_file: { file: fixture_file_upload('valid_contacts.csv') },
+        contact_file: { file: fixture_file_upload("valid_contacts.csv") },
         column_order: %w[name date_of_birth phone address credit_card email]
       }
     end
 
-    it 'creates contact file' do
+    it "creates contact file" do
       expect { post_contact_files_path }.to change(ContactFile, :count).by 1
     end
 
-    it 'creates attachment for the uploaded file' do
+    it "creates attachment for the uploaded file" do
       expect { post_contact_files_path }.to change(ActiveStorage::Attachment, :count).by(1)
     end
 
-    it 'enqueues ImportFileWithContactsJob' do
+    it "enqueues ImportFileWithContactsJob" do
       post_contact_files_path
 
       expect(ImportFileWithContactsJob)
         .to have_enqueued_sidekiq_job(ContactFile.first.id, params[:column_order])
     end
 
-    it 'displays flash notice and redirects to contact_files_path' do
+    it "displays flash notice and redirects to contact_files_path" do
       post_contact_files_path
 
-      expect(flash[:notice]).to eq 'File is being processed. Wait a few minutes and refresh the page.'
+      expect(flash[:notice]).to eq "File is being processed. Wait a few minutes and refresh the page."
       expect(response).to redirect_to contact_files_path
     end
   end
