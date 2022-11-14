@@ -1,7 +1,8 @@
 # frozen_string_literal: true
-include ActiveStorage::Blob::Analyzable
 
 class ContactFilesController < ApplicationController
+  include ActiveStorage::Blob::Analyzable
+
   def index
     @contact_files = current_user.contact_files.order(created_at: :desc)
   end
@@ -15,9 +16,9 @@ class ContactFilesController < ApplicationController
 
     @contact_file.save
 
-    ImportFileWithContactsJob.perform_in(5.seconds.from_now, @contact_file.id, params["column_order"])
+    ImportFileWithContactsJob.perform_in(5.seconds.from_now, @contact_file.id, params['column_order'])
 
-    redirect_to contact_files_path, notice: "File is being processed. Wait a few minutes and refresh the page."
+    redirect_to contact_files_path, notice: 'File is being processed. Wait a few minutes and refresh the page.'
   end
 
   private
