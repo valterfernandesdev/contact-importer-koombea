@@ -74,6 +74,9 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/NestedGroups:
   Max: 5
 
+RSpec/MessageSpies:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
