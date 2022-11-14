@@ -44,7 +44,7 @@
                   <%= contact.address %>
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  <%= "**********#{contact.credit_card_number.to_s.last(4)}" %>
+                  <%= "**********#{contact.credit_card_last_four_digits}" %>
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                   <%= contact.credit_card_network %>

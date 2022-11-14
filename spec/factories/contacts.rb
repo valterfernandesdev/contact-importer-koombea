@@ -8,6 +8,7 @@ FactoryBot.define do
     phone { "(+57) 320 432 05 09" }
     address { Faker::Address.full_address }
     credit_card_number { Faker::Stripe.valid_card(card_type: "visa_debit") }
+    credit_card_last_four_digits { credit_card_number.to_s.last(4) }
     credit_card_network { "Visa" }
     email { Faker::Internet.unique.email }
   end

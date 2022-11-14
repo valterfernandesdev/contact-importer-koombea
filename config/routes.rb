@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   resources :contacts, only: %i[index]
   resources :contact_files, only: %i[new create index]
 
-  root to: "contacts#index"
+  root to: "contact_files#index"
 end
