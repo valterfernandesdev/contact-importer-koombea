@@ -16,7 +16,7 @@ class Contact < ApplicationRecord
 
   before_validation :credit_card_network_from_card_number
 
-  validates :email, format: { with: Devise.email_regexp }
+  validates :email, uniqueness: { scope: :user_id }, format: { with: Devise.email_regexp }
 
   private
 

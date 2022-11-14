@@ -86,6 +86,9 @@ Style/IfUnlessModifier:
 Style/HashSyntax:
   EnforcedShorthandSyntax: either
 
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
 Rails/I18nLocaleTexts:
   Enabled: false
   

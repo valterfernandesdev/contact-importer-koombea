@@ -65,7 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 20_221_113_163_659) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.bigint 'user_id'
-    t.index %w[email user_id], name: 'index_contacts_on_email_and_user_id', unique: true
     t.index ['user_id'], name: 'index_contacts_on_user_id'
   end
 

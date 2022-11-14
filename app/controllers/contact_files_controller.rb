@@ -4,7 +4,7 @@ class ContactFilesController < ApplicationController
   include ActiveStorage::Blob::Analyzable
 
   def index
-    @contact_files = current_user.contact_files.order(created_at: :desc)
+    @contact_files = current_user.contact_files.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def new
