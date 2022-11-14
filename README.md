@@ -5,7 +5,7 @@
 ```bash
 bundle install
 yarn
-rails db:create db:migrate db:seed
+rails db:drop db:create db:migrate db:seed
 ```
 ### Running locally
 
@@ -65,3 +65,9 @@ sudo service redis-server restart
 ```
 
 To check all background jobs, go to http://localhost:3000/sidekiq
+
+
+### Test User
+There is a test user created with the following credentials:
+Email: test@koombea.com
+Password: 123456
