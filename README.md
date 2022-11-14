@@ -6,6 +6,7 @@
 bundle install
 yarn
 rails db:drop db:create db:migrate db:seed
+bundle exec rails assets:precompile
 ```
 ### Running locally
 
@@ -18,6 +19,7 @@ bin/dev # runs everything
 bin/dev web # runs rails
 bin/dev js # runs js
 bin/dev css # runs css
+bin/dev worker # runs sidekiq
 ```
 
 ## Debugging
@@ -43,14 +45,14 @@ Insert a `debugger` statement in any Ruby code to stop execution at that point a
 ##### Running tests
 Setup
 ```
-bin/rails db:test:prepare
+rails db:test:prepare
 ```
 
 Running
 ```sh
-bin/rspec
-bin/rspec spec/path/to/myfile.rb
-bin/rspec spec/path/to/myfile.rb:50
+rspec
+rspec spec/path/to/myfile.rb
+rspec spec/path/to/myfile.rb:50
 ```
 ### Rubocop
 Running
