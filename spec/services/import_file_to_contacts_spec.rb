@@ -35,6 +35,10 @@ RSpec.describe ImportFileToContacts do
 
         expect(contact_file.log).to be_blank
       end
+
+      it 'returns success response' do
+        expect(call.success?).to be_truthy
+      end
     end
 
     context 'when file has one invalid contact and one valid' do
@@ -58,6 +62,10 @@ RSpec.describe ImportFileToContacts do
           'Line 2 failed to import with error: Name Only letters, spaces and hyphens are allowed, ' \
           'Phone is invalid, Email is invalid;'
         )
+      end
+
+      it 'returns success response' do
+        expect(call.success?).to be_truthy
       end
     end
 
@@ -91,6 +99,40 @@ RSpec.describe ImportFileToContacts do
         call
 
         expect(contact_file.log).to be_blank
+      end
+
+      it 'returns success response' do
+        expect(call.success?).to be_truthy
+      end
+    end
+
+    context 'when file is invalid' do
+      let(:contact_file) do
+        create(:contact_file, status: :processing, file: fixture_file_upload('all_invalid.csv'))
+      end
+      let(:column_order) { 'name,address,credit_card_number,email' }
+
+      it 'creates contacts' do
+        expect { call }.to change(Contact, :count).by 0
+      end
+
+      it 'changes file status to failed' do
+        call
+
+        expect(contact_file).to be_failed
+      end
+
+      it 'sets log error' do
+        call
+
+        expect(contact_file.log).to eq(
+          "Line 2 failed to import with error: Date of birth can't be blank, " \
+          "Phone can't be blank, Phone is invalid, Date of birth Invalid format. Use ISO8601 format;"
+        )
+      end
+
+      it 'returns success response' do
+        expect(call.success?).to be_falsey
       end
     end
   end

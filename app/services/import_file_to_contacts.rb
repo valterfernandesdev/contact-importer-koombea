@@ -22,12 +22,20 @@ class ImportFileToContacts < ApplicationService
       contact_file.update!(log: log_message(contact, index))
     end
 
-    return contact_file.failed! unless any_contact_persisted?
+    return failure_response unless any_contact_persisted?
 
     contact_file.finished!
+
+    Result.new(success?: true, data: imported_contacts.compact)
   end
 
   private
+
+  def failure_response
+    contact_file.failed!
+
+    Result.new(success?: false, data: imported_contacts.compact)
+  end
 
   def build_contact(content)
     contact = Contact.new(user: contact_file.user)
