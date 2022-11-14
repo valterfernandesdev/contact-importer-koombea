@@ -37,7 +37,7 @@ RSpec.describe ImportFileToContacts do
       end
 
       it 'returns success response' do
-        expect(call.success?).to be_truthy
+        expect(call).to be_success
       end
     end
 
@@ -65,7 +65,7 @@ RSpec.describe ImportFileToContacts do
       end
 
       it 'returns success response' do
-        expect(call.success?).to be_truthy
+        expect(call).to be_success
       end
     end
 
@@ -102,7 +102,7 @@ RSpec.describe ImportFileToContacts do
       end
 
       it 'returns success response' do
-        expect(call.success?).to be_truthy
+        expect(call).to be_success
       end
     end
 
@@ -113,7 +113,7 @@ RSpec.describe ImportFileToContacts do
       let(:column_order) { 'name,address,credit_card_number,email' }
 
       it 'creates contacts' do
-        expect { call }.to change(Contact, :count).by 0
+        expect { call }.not_to change(Contact, :count)
       end
 
       it 'changes file status to failed' do
@@ -132,7 +132,7 @@ RSpec.describe ImportFileToContacts do
       end
 
       it 'returns success response' do
-        expect(call.success?).to be_falsey
+        expect(call).not_to be_success
       end
     end
   end
