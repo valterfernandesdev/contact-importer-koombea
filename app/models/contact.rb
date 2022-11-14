@@ -5,7 +5,7 @@ class Contact < ApplicationRecord
   validates :name, :date_of_birth, :phone, :address, :credit_card_number, :credit_card_network, :email, presence: true
   validates :name, format: {
     with: /\A[a-zA-Z\s-]+\z/,
-    message: 'Only letters, spaces and hyphens are allowed.'
+    message: 'Only letters, spaces and hyphens are allowed'
   }
   validate :date_of_birth
   validates :phone, format: {
@@ -16,14 +16,14 @@ class Contact < ApplicationRecord
 
   before_validation :credit_card_network_from_card_number
 
-  validates_format_of :email, with: Devise::email_regexp
+  validates :email, format: { with: Devise.email_regexp }
 
   private
 
   def date_of_birth_format
     return if Date._iso8601(date_of_birth).present?
 
-    errors.add(:date_of_birth, 'Invalid format. Use ISO8601 format.')
+    errors.add(:date_of_birth, 'Invalid format. Use ISO8601 format')
   end
 
   def credit_card_network_from_card_number

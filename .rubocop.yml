@@ -53,8 +53,7 @@ Metrics/PerceivedComplexity:
   Max: 15
 
 Metrics/AbcSize:
-  Exclude:
-    - 'db/migrate/**/*'
+  Enabled: false
 
 RSpec/ExampleLength:
   Max: 25
