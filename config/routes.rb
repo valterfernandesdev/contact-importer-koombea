@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web, at: '/sidekiq'
 
-  resources :contacts
+  resources :contacts, only: %i[index]
   resources :contact_files, only: %i[new create index]
 
   root to: 'contacts#index'
