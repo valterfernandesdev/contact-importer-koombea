@@ -35,7 +35,7 @@
                   <%= contact.name %>
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  <%= contact.date_of_birth %>
+                  <%= Date.iso8601(contact.date_of_birth).strftime("%Y %B %d") %>
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                   <%= contact.phone %>
